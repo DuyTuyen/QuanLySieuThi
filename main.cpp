@@ -58,3 +58,20 @@ void nhap(danhSachST& list) {
 		p = p->next;
 	}
 }
+void xuat(danhSachST list) {
+	SieuThi* p = list.danhSachST;
+	if (p != NULL) {
+		while (p != NULL) {
+			cout << "Danh sach cac sieu thi:";
+			cout << "Ma sieu thi: " << p->maST << endl;
+			cout << "Ten sieu thi: " << p->tenST << endl;
+			cout << "Nam thanh lap: " << p->namThanhLap << endl;
+			cout << "Doanh so co ban: " << p->doanhSoCoBan << endl;
+			cout << "So luong nhan vien: " << p->soLuongNhanVien << endl;
+			p = p->next;
+		};
+	}
+	else {
+		cout << "Danh sach rong !";
+	}
+}
