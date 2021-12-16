@@ -20,9 +20,9 @@ void init(danhSachST& list) {		// Hàm khởi tạo init
 	list.danhSachST = NULL;
 	list.soLuong = 0;
 }
+
 void kiemTraSieuThiTonTai(danhSachST& list, char n[]) {
 	SieuThi* p = list.danhSachST;
-
 	if (p != NULL) {
 		while (p != NULL) {
 			if (strcmp(n, p->maST) == 0) {		// Dung ham strcmp de so sanh 2 ma voi nhau
@@ -31,6 +31,39 @@ void kiemTraSieuThiTonTai(danhSachST& list, char n[]) {
 			}
 			p = p->next;
 		};
+	}
+}
+void inMaxMinDoanhSo(danhSachST list) {
+	SieuThi* p = list.danhSachST;
+	int max = 0, min = 9999;		
+	SieuThi* q = list.danhSachST;
+	SieuThi* w = list.danhSachST;
+	if (p != NULL) {
+		while (p != NULL) {
+			//
+			if (p->doanhSoCoBan > max) {			// Thuật toán tìm max doanh số
+				max = p->doanhSoCoBan;
+				q = p;
+			}
+			if (p->doanhSoCoBan < min) {			// Thuật toán tìm min doanh số
+				min = p->doanhSoCoBan;
+				w = p;
+			}
+			p = p->next;
+		};
+		cout << "Danh sach cac sieu thi co doanh thu lon nhat:";
+		cout << "Ma sieu thi: " << q->maST << endl;
+		cout << "Ten sieu thi: " << q->tenST << endl;
+		cout << "Nam thanh lap: " << q->namThanhLap << endl;
+		cout << "Doanh so co ban: " << q->doanhSoCoBan << endl;
+		cout << "So luong nhan vien: " << q->soLuongNhanVien << endl;
+
+		cout << "Danh sach cac sieu thi co doanh thu nho nhat:";
+		cout << "Ma sieu thi: " << w->maST << endl;
+		cout << "Ten sieu thi: " << w->tenST << endl;
+		cout << "Nam thanh lap: " << w->namThanhLap << endl;
+		cout << "Doanh so co ban: " << w->doanhSoCoBan << endl;
+		cout << "So luong nhan vien: " << w->soLuongNhanVien << endl;
 	}
 	cout << "Ma khong ton tai! ";		
 }
