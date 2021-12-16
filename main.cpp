@@ -58,3 +58,4 @@ void nhap(danhSachST& list) {
 		p = p->next;
 	}
 }
+// Hàm nhập danh sách n siêu thị với đầy đủ thông tin
