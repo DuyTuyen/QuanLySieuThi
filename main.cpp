@@ -219,6 +219,22 @@ void docfile(string filename)
 	else		// Không mở được thì chạy xuống đây
 		cout << "Khong mo duoc file";
 }
+void lietKeCacSieuThiLonHonSoLoiNhuanDaNhap(danhSachST list) {
+	int soLoiNhuan = 0;
+
+	cout << "Nhap 1 so loi nhuan:";		// Cho người dùng nhập vào 1 số lợi nhuận
+	cin >> soLoiNhuan;
+	SieuThi* p = list.danhSachST;
+	if (p != NULL) {
+		while (p != NULL)
+		{
+			if (soLoiNhuan < tinhLoiNhuan1Nam(p)) {			// Điều kiện nếu lợi nhuận 1 năm lớn hơn thì liệt kê tên siêu thị
+				cout << "Cac sieu thi co loi nhuan lon hon la: " << p->tenST;
+			}
+			p = p->next;
+		}
+	}
+}
 void showMenu()
 {
 	cout << "-------------------------------------------------------------------" << endl;
