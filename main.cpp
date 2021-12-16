@@ -219,3 +219,53 @@ void docfile(string filename)
 	else		// Không mở được thì chạy xuống đây
 		cout << "Khong mo duoc file";
 }
+void showMenu()
+{
+	cout << "-------------------------------------------------------------------" << endl;
+	cout << " \t1:Nhap danh sach sieu thi" << endl;
+	cout << " \t2:Xuat danh sach sieu thi" << endl;
+	cout << " \t3:Kiem tra 1 ma sieu thi co ton tai khong" << endl;
+	cout << " \t4:In thonng tin sieu thi co doanh thu lon nhat va nho nhat" << endl;
+	cout << " \t5:In thonng tin sieu thi co so luong nhan vien thu lon nhat va nho nhat" << endl;
+	cout << " \t6:Thong ke cac sieu thi co so luong nhan vien: duoi 100 , tu 100 den 200, tren 200" << endl;
+	cout << "-------------------------------------------------------------------" << endl;
+}
+int main() {
+	int luaChon = -1;
+	danhSachST list;
+	init(list);
+	char n[50];
+	do
+	{
+		showMenu();
+		cout << "\n Nhap lua chon (nhap 0 de thoat) :";
+		cin >> luaChon;
+		switch (luaChon)
+		{
+		case 1:
+			cin.ignore();
+			nhap(list);
+			break;
+		case 2:
+			xuat(list);
+			break;
+		case 3:
+			cout << "Nhap ma sieu thi can tim: ";
+			cin >> n;
+			kiemTraSieuThiTonTai(list, n);
+			break;
+		case 4:
+			inMaxMinDoanhSo(list);
+			break;
+		case 5:
+			inMaxMinNhanVien(list);
+			break;
+		case 6:
+			ghifile("sieuthi.txt", list);
+			docfile("sieuthi.txt");
+			break;
+		default:
+			break;
+		}
+	} while (luaChon > 0 && luaChon < 11);
+}
