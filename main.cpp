@@ -219,6 +219,15 @@ void docfile(string filename)
 	else		// Không mở được thì chạy xuống đây
 		cout << "Khong mo duoc file";
 }
+int tinhLoiNhuan1Nam(SieuThi* sieuthi) {
+	int luongcb = 0;
+	int loiNhuan = 0;
+	cout << "Nhap luong co ban cua nhan vien: ";
+	cin >> luongcb;
+	loiNhuan = sieuthi->doanhSoCoBan - (luongcb * sieuthi->namThanhLap);		// Thuật toán tính lợi nhuận 
+	cout << "Loi nhuan trong 1 nam la: " << loiNhuan<< endl;
+	return loiNhuan;
+}
 void showMenu()
 {
 	cout << "-------------------------------------------------------------------" << endl;
