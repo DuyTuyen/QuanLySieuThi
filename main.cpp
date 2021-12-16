@@ -228,6 +228,9 @@ void tinhDoanhThuTuNamThanhLap(danhSachST list) {
 		{
 			doanhSo = p->doanhSoCoBan * (2021 - p->namThanhLap);  // Thuật toán tính doanh thu
 			cout << "Doanh so cua sieu thi la: " << doanhSo << endl;
+			}
+	}
+}
 void lietKeCacSieuThiLonHonSoLoiNhuanDaNhap(danhSachST list) {
 	int soLoiNhuan = 0;
 
@@ -252,6 +255,60 @@ int tinhLoiNhuan1Nam(SieuThi* sieuthi) {
 	loiNhuan = sieuthi->doanhSoCoBan - (luongcb * sieuthi->namThanhLap);		// Thuật toán tính lợi nhuận 
 	cout << "Loi nhuan trong 1 nam la: " << loiNhuan<< endl;
 	return loiNhuan;
+	}
+SieuThi* timNamThanhLapNhoNhat(SieuThi* list) {
+	SieuThi* p = list->next;
+	SieuThi* min = list;
+	while (p != NULL) {			// Duyệt danh sách
+		if (min->namThanhLap > p->namThanhLap)
+			min = p;
+		p = p->next;
+	}
+	return min;
+}
+
+void swap(SieuThi* st1, SieuThi* st2) {			// Hàm swap dùng để hoán đổi
+	// shadow = st1
+	SieuThi* shadow = new SieuThi();			// Tạo ra 1 con trỏ shadow như 1 biến tạm
+	strncpy_s(shadow->maST, st1->maST, 50); 
+	shadow->doanhSoCoBan = st1->doanhSoCoBan;
+	shadow->namThanhLap = st1->namThanhLap;
+	shadow->soLuongNhanVien = st1->soLuongNhanVien;
+	strncpy_s(shadow->tenST, st1->tenST, 50);
+
+	// st1 = st2
+	strncpy_s(st1->maST, st2->maST, 50);
+	st1->doanhSoCoBan = st2->doanhSoCoBan;
+	st1->namThanhLap = st2->namThanhLap;
+	st1->soLuongNhanVien = st2->soLuongNhanVien;
+	strncpy_s(st1->tenST, st2->tenST, 50);
+
+	//st2 = shadow
+	strncpy_s(st2->maST, shadow->maST, 50);
+	st2->doanhSoCoBan = shadow->doanhSoCoBan;
+	st2->namThanhLap = shadow->namThanhLap;
+	st2->soLuongNhanVien = shadow->soLuongNhanVien;
+	strncpy_s(st2->tenST, shadow->tenST, 50);
+
+}
+void sapXepTangDanTheoNamThanhLap(danhSachST& list) {
+	SieuThi* p = list.danhSachST;
+	SieuThi* min = NULL;
+	if (p != NULL) {
+		try {
+			while (p != NULL) {
+				min = timNamThanhLapNhoNhat(p);
+				if (min != p) {
+					swap(p, min);
+				}
+				p = p->next;
+			}
+		}
+		catch (int i) {
+			cout << i;
+		}
+
+	}
 }
 void showMenu()
 {
@@ -262,6 +319,10 @@ void showMenu()
 	cout << " \t4:In thonng tin sieu thi co doanh thu lon nhat va nho nhat" << endl;
 	cout << " \t5:In thonng tin sieu thi co so luong nhan vien thu lon nhat va nho nhat" << endl;
 	cout << " \t6:Thong ke cac sieu thi co so luong nhan vien: duoi 100 , tu 100 den 200, tren 200" << endl;
+	cout << " \t7:Xuat doanh so cua sieu thi tu nam thanh lap toi nay" << endl;
+	cout << " \t8:Nhap luong co ban va tinh loi nhuan sieu thi trong 1 nam" << endl;
+	cout << " \t9:Nhap vao 1 so loi nhuan va liet ke cac sieu thi so loi nhuan lon hon" << endl;
+	cout << " \t10:Sap xep danh sach tang dan theo nam thanh lap" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
 }
 int main() {
@@ -297,6 +358,19 @@ int main() {
 		case 6:
 			ghifile("sieuthi.txt", list);
 			docfile("sieuthi.txt");
+			break;
+		case 7:
+			tinhDoanhThuTuNamThanhLap(list);
+			break;
+		case 8:
+			tinhLoiNhuan1Nam(list.danhSachST);
+			break;
+		case 9:
+			lietKeCacSieuThiLonHonSoLoiNhuanDaNhap(list);
+			break;
+		case 10:
+			sapXepTangDanTheoNamThanhLap(list);
+			xuat(list);
 			break;
 		default:
 			break;
