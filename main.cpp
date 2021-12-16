@@ -231,6 +231,60 @@ void tinhDoanhThuTuNamThanhLap(danhSachST list) {
 		}
 	}
 }
+SieuThi* timNamThanhLapNhoNhat(SieuThi* list) {
+	SieuThi* p = list->next;
+	SieuThi* min = list;
+	while (p != NULL) {			// Duyệt danh sách
+		if (min->namThanhLap > p->namThanhLap)
+			min = p;
+		p = p->next;
+	}
+	return min;
+}
+
+void swap(SieuThi* st1, SieuThi* st2) {			// Hàm swap dùng để hoán đổi
+	// shadow = st1
+	SieuThi* shadow = new SieuThi();			// Tạo ra 1 con trỏ shadow như 1 biến tạm
+	strncpy_s(shadow->maST, st1->maST, 50); 
+	shadow->doanhSoCoBan = st1->doanhSoCoBan;
+	shadow->namThanhLap = st1->namThanhLap;
+	shadow->soLuongNhanVien = st1->soLuongNhanVien;
+	strncpy_s(shadow->tenST, st1->tenST, 50);
+
+	// st1 = st2
+	strncpy_s(st1->maST, st2->maST, 50);
+	st1->doanhSoCoBan = st2->doanhSoCoBan;
+	st1->namThanhLap = st2->namThanhLap;
+	st1->soLuongNhanVien = st2->soLuongNhanVien;
+	strncpy_s(st1->tenST, st2->tenST, 50);
+
+	//st2 = shadow
+	strncpy_s(st2->maST, shadow->maST, 50);
+	st2->doanhSoCoBan = shadow->doanhSoCoBan;
+	st2->namThanhLap = shadow->namThanhLap;
+	st2->soLuongNhanVien = shadow->soLuongNhanVien;
+	strncpy_s(st2->tenST, shadow->tenST, 50);
+
+}
+void sapXepTangDanTheoNamThanhLap(danhSachST& list) {
+	SieuThi* p = list.danhSachST;
+	SieuThi* min = NULL;
+	if (p != NULL) {
+		try {
+			while (p != NULL) {
+				min = timNamThanhLapNhoNhat(p);
+				if (min != p) {
+					swap(p, min);
+				}
+				p = p->next;
+			}
+		}
+		catch (int i) {
+			cout << i;
+		}
+
+	}
+}
 void showMenu()
 {
 	cout << "-------------------------------------------------------------------" << endl;
