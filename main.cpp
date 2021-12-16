@@ -231,6 +231,7 @@ void tinhDoanhThuTuNamThanhLap(danhSachST list) {
 			p = p->next;
 		}
 	}
+}
 int tinhLoiNhuan1Nam(SieuThi* sieuthi) {
 	int luongcb = 0;
 	int loiNhuan = 0;
