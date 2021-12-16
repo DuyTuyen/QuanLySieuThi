@@ -294,6 +294,10 @@ void showMenu()
 	cout << " \t4:In thonng tin sieu thi co doanh thu lon nhat va nho nhat" << endl;
 	cout << " \t5:In thonng tin sieu thi co so luong nhan vien thu lon nhat va nho nhat" << endl;
 	cout << " \t6:Thong ke cac sieu thi co so luong nhan vien: duoi 100 , tu 100 den 200, tren 200" << endl;
+	cout << " \t7:Xuat doanh so cua sieu thi tu nam thanh lap toi nay" << endl;
+	cout << " \t8:Nhap luong co ban va tinh loi nhuan sieu thi trong 1 nam" << endl;
+	cout << " \t9:Nhap vao 1 so loi nhuan va liet ke cac sieu thi so loi nhuan lon hon" << endl;
+	cout << " \t10:Sap xep danh sach tang dan theo nam thanh lap" << endl;
 	cout << "-------------------------------------------------------------------" << endl;
 }
 int main() {
@@ -329,6 +333,19 @@ int main() {
 		case 6:
 			ghifile("sieuthi.txt", list);
 			docfile("sieuthi.txt");
+			break;
+		case 7:
+			tinhDoanhThuTuNamThanhLap(list);
+			break;
+		case 8:
+			tinhLoiNhuan1Nam(list.danhSachST);
+			break;
+		case 9:
+			lietKeCacSieuThiLonHonSoLoiNhuanDaNhap(list);
+			break;
+		case 10:
+			sapXepTangDanTheoNamThanhLap(list);
+			xuat(list);
 			break;
 		default:
 			break;
