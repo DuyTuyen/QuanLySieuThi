@@ -20,41 +20,36 @@ void init(danhSachST& list) {		// Hàm khởi tạo init
 	list.danhSachST = NULL;
 	list.soLuong = 0;
 }
-SieuThi* nhapThongTinSieuThi() {		// Hàm nhập thông tin siêu thị
-	SieuThi* tam = new SieuThi();
-	cout << "Nhap ma sieu thi: ";
-	cin.getline(tam->maST, 50);
-	cout << "Nhap ten sieu thi: ";
-	cin.getline(tam->tenST, 50);
-	cout << "Nhap nam thanh lap: ";
-	cin >> tam->namThanhLap;
-	cout << "Nhap doanh so co ban: ";
-	cin >> tam->doanhSoCoBan;
-	cout << "Nhap so luong nhan vien: ";
-	cin >> tam->soLuongNhanVien;
-	cin.ignore();
-	tam->next = NULL;
-	return tam;
-}
-void nhap(danhSachST& list) {		
-	SieuThi* p = list.danhSachST;		// Gán con trỏ p
-	int k = 0;							// Biến k chứa số lượng siêu thị nhập vào
-	cout << "Nhap so luong sieu thi trong danh sach:";
-	cin >> k;
-	cin.ignore();
-
+void inMaxMinDoanhSo(danhSachST list) {
+	SieuThi* p = list.danhSachST;
+	int max = 0, min = 9999;		
+	SieuThi* q = list.danhSachST;
+	SieuThi* w = list.danhSachST;
 	if (p != NULL) {
-		while (p->next != NULL) {	// Duyệt danh sách
+		while (p != NULL) {
+			//
+			if (p->doanhSoCoBan > max) {			// Thuật toán tìm max doanh số
+				max = p->doanhSoCoBan;
+				q = p;
+			}
+			if (p->doanhSoCoBan < min) {			// Thuật toán tìm min doanh số
+				min = p->doanhSoCoBan;
+				w = p;
+			}
 			p = p->next;
-		}
-	}
-	else {
-		list.danhSachST = nhapThongTinSieuThi();  // Nếu rỗng thì cho nhập thông tin
-		p = list.danhSachST;
-	}
+		};
+		cout << "Danh sach cac sieu thi co doanh thu lon nhat:";
+		cout << "Ma sieu thi: " << q->maST << endl;
+		cout << "Ten sieu thi: " << q->tenST << endl;
+		cout << "Nam thanh lap: " << q->namThanhLap << endl;
+		cout << "Doanh so co ban: " << q->doanhSoCoBan << endl;
+		cout << "So luong nhan vien: " << q->soLuongNhanVien << endl;
 
-	for (int i = 0; i < k - 1; i++) {		// Chạy for để nhập đủ số lượng k đã yêu cầu
-		p->next = nhapThongTinSieuThi();
-		p = p->next;
+		cout << "Danh sach cac sieu thi co doanh thu nho nhat:";
+		cout << "Ma sieu thi: " << w->maST << endl;
+		cout << "Ten sieu thi: " << w->tenST << endl;
+		cout << "Nam thanh lap: " << w->namThanhLap << endl;
+		cout << "Doanh so co ban: " << w->doanhSoCoBan << endl;
+		cout << "So luong nhan vien: " << w->soLuongNhanVien << endl;
 	}
 }
