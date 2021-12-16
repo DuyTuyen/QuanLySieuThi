@@ -153,7 +153,6 @@ void xuat(danhSachST list) {
 	}
 	cout << "Ma khong ton tai! ";		
 	}
-}
 // Hàm nhập danh sách n siêu thị với đầy đủ thông tin
 void ghiNode(fstream& f, danhSachST list)
 {
@@ -218,6 +217,19 @@ void docfile(string filename)
 	}
 	else		// Không mở được thì chạy xuống đây
 		cout << "Khong mo duoc file";
+}
+void tinhDoanhThuTuNamThanhLap(danhSachST list) {
+
+	SieuThi* p = list.danhSachST;
+	int doanhSo = 0;
+	if (p != NULL) {
+		while (p != NULL)
+		{
+			doanhSo = p->doanhSoCoBan * (2021 - p->namThanhLap);  // Thuật toán tính doanh thu
+			cout << "Doanh so cua sieu thi la: " << doanhSo << endl;
+			p = p->next;
+		}
+	}
 }
 void showMenu()
 {
