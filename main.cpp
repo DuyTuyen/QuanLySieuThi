@@ -115,4 +115,6 @@ void xuat(danhSachST list) {
 		cout << "Danh sach rong !";
 	}
 	cout << "Ma khong ton tai! ";		
+	}
 }
+// Hàm nhập danh sách n siêu thị với đầy đủ thông tin
