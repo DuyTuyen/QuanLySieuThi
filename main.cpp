@@ -22,7 +22,7 @@ void init(danhSachST& list) {		// Hàm khởi tạo init
 }
 void inMaxMinDoanhSo(danhSachST list) {
 	SieuThi* p = list.danhSachST;
-	int max = 0, min = 9999;		
+	int max = 0, min = std::numeric_limits<int>::max();		// Ham de lay gia tri lon nhat cua min
 	SieuThi* q = list.danhSachST;
 	SieuThi* w = list.danhSachST;
 	if (p != NULL) {
