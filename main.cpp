@@ -22,7 +22,7 @@ void init(danhSachST& list) {		// Hàm khởi tạo init
 }
 void inMaxMinNhanVien(danhSachST list) {
 	SieuThi* p = list.danhSachST;
-	int max1 = 0, min1 = 9999;
+	int max1 = 0, min1 = std::numeric_limits<int>::max();
 	SieuThi* k = list.danhSachST;
 	SieuThi* l = list.danhSachST;
 	if (p != NULL) {
