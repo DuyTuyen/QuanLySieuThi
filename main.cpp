@@ -22,18 +22,20 @@ void init(danhSachST& list) {		// Hàm khởi tạo init
 }
 SieuThi* nhapThongTinSieuThi() {		// Hàm nhập thông tin siêu thị
 	SieuThi* tam = new SieuThi();
-	cout << "Nhap ma sieu thi: ";
-	cin.getline(tam->maST, 50);
-	cout << "Nhap ten sieu thi: ";
-	cin.getline(tam->tenST, 50);
-	cout << "Nhap nam thanh lap: ";
-	cin >> tam->namThanhLap;
-	cout << "Nhap doanh so co ban: ";
-	cin >> tam->doanhSoCoBan;
-	cout << "Nhap so luong nhan vien: ";
-	cin >> tam->soLuongNhanVien;
-	cin.ignore();
-	tam->next = NULL;
+	do{
+		cout << "Nhap ma sieu thi: ";
+		cin.getline(tam->maST, 50);
+		cout << "Nhap ten sieu thi: ";
+		cin.getline(tam->tenST, 50);
+		cout << "Nhap nam thanh lap: ";
+		cin >> tam->namThanhLap;
+		cout << "Nhap doanh so co ban: ";
+		cin >> tam->doanhSoCoBan;
+		cout << "Nhap so luong nhan vien: ";
+		cin >> tam->soLuongNhanVien;
+		cin.ignore();
+		tam->next = NULL;
+	}while(tam->soLuongNhanVien < 0 || tam->doanhSoCoBan < 0 || tam->namThanhLap < 0);
 	return tam;
 }
 void nhap(danhSachST& list) {		
