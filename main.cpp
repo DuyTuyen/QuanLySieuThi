@@ -222,13 +222,15 @@ void docfile(string filename)
 }
 
 void tinhDoanhThuTuNamThanhLap(danhSachST list) {
-
+	time_t now = time(0);
+	tm* ltm = localtime(&now);
+	int year =  1900 + ltm->tm_year;
 	SieuThi* p = list.danhSachST;
 	int doanhSo = 0;
 	if (p != NULL) {
 		while (p != NULL)
 		{
-			doanhSo = p->doanhSoCoBan * (2021 - p->namThanhLap);  // Thuật toán tính doanh thu
+			doanhSo = p->doanhSoCoBan * (year - p->namThanhLap);  // Thuật toán tính doanh thu
 			cout << "Doanh so cua sieu thi la: " << doanhSo << endl;
 			}
 	}
