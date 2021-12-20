@@ -239,9 +239,7 @@ void lietKeCacSieuThiLonHonSoLoiNhuanDaNhap(danhSachST list) {
 	int soLoiNhuan = 0;
 
 	cout << "Nhap 1 so loi nhuan:";		// Cho người dùng nhập vào 1 số lợi nhuận
-	do{
 	cin >> soLoiNhuan;
-	}while(soLoiNhuan <= 0);
 	SieuThi* p = list.danhSachST;
 	if (p != NULL) {
 		while (p != NULL)
