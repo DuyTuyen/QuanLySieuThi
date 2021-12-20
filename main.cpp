@@ -327,6 +327,7 @@ void showMenu()
 	cout << " \t8:Nhap luong co ban va tinh loi nhuan sieu thi trong 1 nam" << endl;
 	cout << " \t9:Nhap vao 1 so loi nhuan va liet ke cac sieu thi so loi nhuan lon hon" << endl;
 	cout << " \t10:Sap xep danh sach tang dan theo nam thanh lap" << endl;
+	cout << "\t Chuc nang 11";
 	cout << "-------------------------------------------------------------------" << endl;
 }
 int main() {
